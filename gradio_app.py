@@ -63,6 +63,6 @@ with gr.Blocks() as app:
 	output_img = gr.Image(label="책 이미지")
 
 	search_btn.click(fn=search_and_recommend, inputs=keyword_input, outputs=title_dropdown)
-	recommend_btn.click(fn=recommend_book, input=[title_dropdown, keyword_input], outputs=[output_text, output_img])
+	recommend_btn.click(fn=recommend_book, inputs=[title_dropdown, keyword_input], outputs=[output_text, output_img])
 
 app.launch()
