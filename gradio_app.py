@@ -35,5 +35,34 @@ def recommend_book(title, keyword):
 	img_path = data.get("image")
 	# 만약 img_path가 있고 os에서 경로가 존재할때 img를 열기 그렇지 않다면 None
 	img = Image.open(img_path) if img_path and os.path.exists(img_path) else None
-	# recommendation 가져오기, 없다면 "추천 실패"
+	# recommendation, img 가져오기. 없다면 "추천 실패" 반환
 	return data.get("recommendation", "추천 실패"), img
+
+# 검색, 추천 결과를 화면에 갱신
+def search_and_recommend(keyword):
+	# 제목 가져오기
+	titles = get_titles(keyword)
+	# 제목이 있다면
+	if titles:
+		print(f"검색어 '{keyword}'로 {len(titles)}개 책 제목 불러옴.")
+		# title 업데이트
+		return gr.update(choices=titles, value=titles[0])
+	
+	# 제목이 없다면
+	print("검색어 '{keyword}' 결과 없음")
+	return gr.update(choices=[], value=None)
+
+# frontend
+with gr.Blocks() as app:
+	gr.Markdown("## GPT 기반 교보문고 도서 추천기")
+	keyword_input = gr.Textbox(label="검색어 입력", placeholder='예: 파이썬')
+	search_btn = gr.Button("도서 목록 불러오기")
+	title_dropdown = gr.Dropdown(label="도서 선택")
+	recommend_btn = gr.Button("GPT 추천 받기")
+	output_text = gr.Textbox(label="추천 결과")
+	output_img = gr.Image(label="책 이미지")
+
+	search_btn.click(fn=search_and_recommend, inputs=keyword_input, outputs=title_dropdown)
+	recommend_btn.click(fn=recommend_book, input=[title_dropdown, keyword_input], outputs=[output_text, output_img])
+
+app.launch()
