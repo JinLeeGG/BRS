@@ -1,10 +1,10 @@
-# Yes24 Book Recommendation System
+# Kyobo Book Recommendation System using web crawling and openAI
 
-A toy project that crawls book information from the Yes24 bookstore website and provides AI-powered book recommendations through a web interface.
+A toy project that crawls book information from the Kyobo bookstore website and provides AI-powered book recommendations through a web interface.
 
 ## 🚀 Features
 
-- **Web Crawling**: Automated crawling of book data from Yes24 website using Selenium
+- **Web Crawling**: Automated crawling of book data from Kyobo website using Selenium
 - **Book Search**: Search for books by keyword with automatic data collection
 - **AI Recommendations**: GPT-powered book recommendations based on user preferences
 - **Web Interface**: User-friendly Gradio interface for easy interaction
@@ -34,7 +34,7 @@ A toy project that crawls book information from the Yes24 bookstore website and 
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd yes24-book-recommender
+   cd Kyobo-book-recommender
    ```
 
 2. **Install dependencies**
@@ -116,7 +116,7 @@ curl "http://localhost:8000/recommend?title=파이썬 프로그래밍&keyword=�
 
 ```
 ├── main.py              # FastAPI application with API endpoints
-├── crawler.py           # Yes24 website crawler using Selenium
+├── crawler.py           # Kyobo website crawler using Selenium
 ├── gradio_app.py        # Gradio web interface
 ├── .env                 # Environment variables (API keys, DB connection)
 ├── images/              # Directory for downloaded book cover images
@@ -159,7 +159,7 @@ The system follows a multi-layered architecture with clear separation of concern
    - Automatic data validation
 
 4. **Web Crawler** ↔ **MongoDB Database**
-   - Automated data collection from Yes24
+   - Automated data collection from Kyobo
    - Data parsing and storage
    - Image download and local storage
 
@@ -168,7 +168,7 @@ The system follows a multi-layered architecture with clear separation of concern
 1. **User Search Request**: User enters keyword in Gradio interface
 2. **API Call**: Gradio sends HTTP request to FastAPI `/books` endpoint
 3. **Database Query**: FastAPI queries MongoDB for existing data
-4. **Auto-Crawling**: If no data exists, triggers Yes24 crawler
+4. **Auto-Crawling**: If no data exists, triggers Kyobo crawler
 5. **Data Storage**: Crawler saves book information and images to MongoDB
 6. **Response**: FastAPI returns book list to Gradio interface
 7. **Recommendation**: User selects book and requests GPT recommendation
@@ -184,7 +184,7 @@ The system follows a multi-layered architecture with clear separation of concern
 - Integration with crawler when data is not available
 
 ### crawler.py
-- Selenium-based web scraping of Yes24 bookstore
+- Selenium-based web scraping of Kyobo bookstore
 - BeautifulSoup for HTML parsing
 - Image downloading and local storage
 - Data sanitization and MongoDB insertion
