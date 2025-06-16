@@ -5,6 +5,9 @@ from pymongo import MongoClient
 from fastapi import FastAPI
 from crawler import crawl_kyobo
 
+# 파일 실행 
+# uvicorn main:app --reload
+
 # env 파일 읽어오기
 load_dotenv()
 
