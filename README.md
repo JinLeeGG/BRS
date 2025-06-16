@@ -1,4 +1,4 @@
-# Book Recommendation System powered by Crawling and GPT
+# Book Recommend System powered by Crawling and GPT
 
 A toy project that crawls book information from the Kyobo bookstore website and provides AI-powered book recommendations through a web interface.
 
