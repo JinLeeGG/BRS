@@ -1,3 +1,5 @@
 venv/
 .env
 images/
+__pycache__/crawler.cpython-311.pyc
+__pycache__/main.cpython-311.pyc
