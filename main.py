@@ -69,7 +69,7 @@ def recommend(title: str = None, keyword: str = "파이썬"):
 	
 	try:
 		response = openai_client.chat.completions.create(
-			model="gpt-4",
+			model="gpt-4.1-nano",
 			messages=[
 				{"role": "system", "content" : "당신은 전문 서평가입니다."},
 				{"role": "user", "content" : prompt}
